@@ -1,0 +1,37 @@
+create table Специальности(
+Шифр_специальности INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+Название_специальности VARCHAR(100) NOT NULL);
+
+INSERT INTO Специальности VALUES (1, 'Повар'),(2, 'Программист'),
+(3, 'Дигустатор'),(4, 'Сварщик'),(5, 'Маг'),(6, 'Стример на twitch');
+
+create table Дисциплины(
+Шифр_дисциплины INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+Название_дисциплины VARCHAR(100));
+
+INSERT INTO Дисциплины VALUES (1, 'Да'),(2, 'Программирование'),
+(3, 'Эрон Егер'),(4, 'Сварщик парень работящий'),(5, 'Маг Воды'),
+(6, 'Стримерское ремесло');
+
+create table Вступительные_экзамены(
+Номер_абитуриента INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+Шифр_дисциплины INT NOT NULL,
+Экзаменационная_оценка INT NOT NULL,
+FOREIGN KEY (Шифр_дисциплины) references Дисциплины(Шифр_дисциплины));
+
+INSERT INTO Вступительные_экзамены VALUES (1, 1, 5),(2, 2, 4),(3, 3, 5),
+(4, 4, 5),(5, 5, 2),(6, 6, 4);
+
+Create table Анкета(
+Номер_абитуриента INT NOT NULL,
+ФИО VARCHAR(200) NOT NUll, 
+Дата_рождения DATE NOT NULL,
+Дата_окончания_учебного_заведения DATE NOT NULL,
+Красный_дипло_медаль TINYINT(1) NOT NULL,
+Адрес VARCHAR(100) NOT NULL,
+Телефон VARCHAR(20) NOT NULL,
+Шифр_специальности INT,
+FOREIGN KEY (Номер_абитуриента) references Вступительные_экзамены(Номер_абитуриента),
+FOREIGN KEY (Шифр_специальности) references Специальности(Шифр_специальности));
+
+INSERT INTO Анкета VALUES (1, 'Какой-то_Чел_Тут', '2000-10-02', '2016-06-02', 1, '+8900-000-00-00' 1,);

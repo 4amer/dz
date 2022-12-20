@@ -1,0 +1,25 @@
+задание 1
+create table sklad(
+    kod_tovara int not null primary key auto_increment,
+     kolichestvo int,
+     data_postupleniya date);
+
+create table tovari(
+    kod_tovara int not null,
+     nazvanie_tovara char,
+     srok_hraneniya char,
+foreign key (kod_tovara) references sklad(kod_tovara));
+
+ create table zayavki(
+     kod_zayavki int not null,
+     nazvanie_organizacii char,
+     kod_tovara int,
+     trebuemoe_kolichestvo int,
+foreign key (kod_tovara) references sklad(kod_tovara));
+
+create table otpusk_tovarov(
+     kod_zayavki int not null,
+     kod_tovara int,
+     otpushennoe_kolichestvo int,
+     data_otpuska_tovara date,
+foreign key (kod_tovara) references sklad(kod_tovara));

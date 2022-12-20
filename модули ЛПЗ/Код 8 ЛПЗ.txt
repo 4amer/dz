@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double Q, X, R;
+        X = sc.nextDouble();
+        R = sc.nextDouble();
+        Q = Math.atan(X / R);
+        if(Q > 0){
+            System.out.println(Q + " положительно");
+        } else if (Q < 0){
+            System.out.println(Q + " отрицательное");
+        } else if (Q == 0){
+            System.out.println(Q + " = 0");
+        } else {
+            System.out.println(Q + " в шоооооке от вашего ввода данных");;
+        }
+    }
+}
